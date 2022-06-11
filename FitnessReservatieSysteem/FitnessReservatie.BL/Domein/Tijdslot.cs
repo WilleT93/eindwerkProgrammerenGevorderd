@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace FitnessReservatie.BL.Domein
 {
-    internal class Tijdslot
+    public class Tijdslot
     {
         public Tijdslot(int id)
         {
-            ZetId(Id);
+            ZetId(id);
         }
 
         public int Id { get;private set; }
-        public void ZetId(int Id)
+        public void ZetId(int id)
         {
-            this.Id = Id;
+            this.Id = id;
         }
     }
     

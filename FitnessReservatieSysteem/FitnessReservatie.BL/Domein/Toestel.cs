@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FitnessReservatie.BL.Domein
 {
-    internal class Toestel
+    public class Toestel
     {
         public Toestel(int id, string type)
         {

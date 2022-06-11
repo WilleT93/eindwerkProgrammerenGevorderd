@@ -8,9 +8,6 @@ namespace FitnessReservatie.BL.Managers
 {
     internal class ReservatieManager
     {
-        public void VoegSessieToe ()
-        {
-
-        }
+        
     }
 }
