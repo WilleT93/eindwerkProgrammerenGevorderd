@@ -9,6 +9,14 @@ namespace FitnessReservatie.BL.Domein
 {
     public class Klant
     {
+        public Klant(int id, string email, string voornaam, string achternaam)
+        {
+            ZetId(id);
+            ZetEmail(email);
+            ZetVoornaam(voornaam);
+            ZetAchternaam(achternaam);
+        }
+
         public int Id { get; private set; }
         public string Email { get; private set; }
         public string Voornaam { get; private set; }
@@ -29,6 +37,22 @@ namespace FitnessReservatie.BL.Domein
                 throw new KlantException("ZetEmail");
             }
             this.Email = email;
+        }
+        public void ZetVoornaam(string voornaam)
+        {
+            if (string.IsNullOrWhiteSpace(voornaam))
+            {
+                throw new KlantException("ZetVoornaam");
+            }
+            this.Voornaam = voornaam;
+        }
+        public void ZetAchternaam(string achternaam)
+        {
+            if (string.IsNullOrWhiteSpace(achternaam))
+            {
+                throw new KlantException("ZetAchternaam");
+            }
+            this.Achternaam = achternaam;
         }
 
     }
