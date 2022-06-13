@@ -1,0 +1,28 @@
+﻿<Window x:Class="FitnessReservatie.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FitnessReservatie.UI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="250" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="C:\Users\Wille\Desktop\eindopdracht-programmerenGevorderd\eindwerkProgrammerenGevorderd\FitnessReservatieSysteem\image-edit.jpg"  Grid.Column="0" Grid.RowSpan="4"/>
+
+        <Label Grid.Row="0" Content="login pagina" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Grid.Row="1" Content="Klant ID:" Margin ="30,20,5,5"/>
+        <TextBox Grid.Row="1" Name="IdTextBox"  Margin="100,20,150,20" InputScope="Number"/>
+        <Label Grid.Row="2" Content="Email:" Margin="30,20,5,5"/>
+        <TextBox Grid.Row="2" Name ="EmailTextBox"  Margin="100,20,150,20" InputScope="EmailSmtpAddress"/>
+        <Button Grid.Row="3" Name ="loginBtn" Content="login" Click="loginBtn_Click"/>
+    </Grid>
+</Window>

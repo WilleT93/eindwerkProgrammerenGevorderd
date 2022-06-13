@@ -11,4 +11,10 @@
     <ProjectReference Include="..\FitnessReservatie.BL\FitnessReservatie.BL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="WelkomWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

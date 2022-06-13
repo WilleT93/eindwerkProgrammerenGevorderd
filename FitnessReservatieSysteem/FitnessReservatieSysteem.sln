@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{C245B781
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FItnessReservatieBLTest", "FItnessReservatieBLTest\FItnessReservatieBLTest.csproj", "{A3998AA2-0ADF-4D3D-8711-CBB9A358C8B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessReservatie.UI", "FitnessReservatie.UI\FitnessReservatie.UI.csproj", "{268FD205-148B-4861-8916-213E073AA55B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{A3998AA2-0ADF-4D3D-8711-CBB9A358C8B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3998AA2-0ADF-4D3D-8711-CBB9A358C8B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3998AA2-0ADF-4D3D-8711-CBB9A358C8B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{268FD205-148B-4861-8916-213E073AA55B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{268FD205-148B-4861-8916-213E073AA55B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{268FD205-148B-4861-8916-213E073AA55B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{268FD205-148B-4861-8916-213E073AA55B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
