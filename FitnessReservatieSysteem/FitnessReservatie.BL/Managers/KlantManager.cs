@@ -18,9 +18,12 @@ namespace FitnessReservatie.BL.Managers
         }
         public string GetKlantVoornaam(int? id, string email)
         {
-            return repo.ZoekKlant(id, email); 
+            return repo.ZoekKlantVoornaam(id, email); 
         }
-
+        public Klant ZoekKlantDetails(int? id, string email)
+        {
+            return repo.ZoekKlantDetails(id, email);
+        }
 
         //public Klant ZoekKlantOpId(int id)
         //{

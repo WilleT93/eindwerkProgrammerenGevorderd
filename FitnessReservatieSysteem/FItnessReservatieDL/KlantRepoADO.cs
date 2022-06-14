@@ -23,7 +23,7 @@ namespace FItnessReservatieDL
         {
             return new SqlConnection(this.connectionstring);
         }
-        public string ZoekKlant(int? id,string email)
+        public string ZoekKlantVoornaam(int? id,string email)
         {
             if((!id.HasValue) && (string.IsNullOrEmpty(email) == true))
             {
@@ -56,8 +56,17 @@ namespace FItnessReservatieDL
                         }
                         //cmd.Parameters.Add(new SqlParameter("@email", SqlDbType.NVarChar));
                         //cmd.Parameters["@email"].Value = email;
-                        return (string)cmd.ExecuteScalar();
-                        
+                        cmd.CommandText= query;       
+                        string KlantVoornaam = (string)cmd.ExecuteScalar();
+                        if (string.IsNullOrEmpty(KlantVoornaam))
+                        {
+                            throw new KlantRepoADOException("Klant bestaat niet.");
+                        }
+                        return KlantVoornaam;
+                    }
+                    catch (KlantRepoADOException)
+                    {
+                        throw;
                     }
                     catch (Exception ex)
                     {
@@ -72,9 +81,77 @@ namespace FItnessReservatieDL
             }
         }
 
-        public Klant ZoekKlantOpId(int id)
+        public Klant ZoekKlantDetails(int? id, string email)
         {
-            throw new NotImplementedException();
+            if ((!id.HasValue) && (string.IsNullOrEmpty(email) == true))
+            {
+                throw new KlantRepoADOException("ZoekKlant - geen geldige input");
+            }
+            SqlConnection connection = GetConnection();
+            string query = "SELECT * from dbo.Klant ";// WHERE Email=@email";
+                    using (SqlCommand cmd = connection.CreateCommand())
+            {
+                if (id.HasValue)
+                {
+                    query += "WHERE ID=@id";
+                }
+                else
+                {
+                    query += "WHERE Email=@email";
+                }
+
+                {
+                    cmd.CommandText = query;
+                    connection.Open();
+                    try
+                    {
+                        if (id.HasValue)
+                        {
+                            cmd.Parameters.AddWithValue("@id", id);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@email", email);
+                        }
+                        //cmd.Parameters.Add(new SqlParameter("@email", SqlDbType.NVarChar));
+                        //cmd.Parameters["@email"].Value = email;
+                        cmd.CommandText = query;
+                        IDataReader reader = cmd.ExecuteReader();
+                        if (reader.Read()) 
+                        {
+                            int klantID = (int)reader["ID"];
+                            string KlantVoornaam = (string)reader["Voornaam"];
+                            string KlantAchternaam = (string)reader["Familienaam"];
+                            string klantEmail = (string)reader["Email"];
+                            Klant k = new Klant(klantID,klantEmail,KlantVoornaam,KlantAchternaam);
+                            return k;
+                        }
+                        else
+                        {
+                            throw new KlantRepoADOException("ZoekKlantDetails - klant niet gevonden");
+                        }
+                        //string KlantVoornaam = (string)cmd.ExecuteScalar();
+                        //if (string.IsNullOrEmpty(KlantVoornaam))
+                        //{
+                        //    throw new KlantRepoADOException("Klant bestaat niet.");
+                        //}
+                        //return KlantVoornaam;
+                    }
+                    catch (KlantRepoADOException)
+                    {
+                        throw;
+                    }
+                    catch (Exception ex)
+                    {
+
+                        throw new KlantRepoADOException("ZoekKlant", ex);
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+            }
         }
-    }
 }

@@ -11,6 +11,7 @@ namespace FitnessReservatie.BL.Interfaces
     {
         //public Klant ZoekKlantOpId(int id);
         //public Klant ZoekKlantOpEmail(string email);
-        public string ZoekKlant(int? id,string email);
+        public string ZoekKlantVoornaam(int? id,string email);
+        public Klant ZoekKlantDetails(int ? id,string email);
     }
 }

@@ -17,7 +17,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Welkom Gebruiker" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Name="welkomLabel" Content="Welkom Gebruiker" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <ListBox Grid.Row="2" Name="ReservatieListBox" Margin="5,5,5,5"/>
         <Label Grid.Row="1" Content="Uw reservaties"/>
         <Button Grid.Row="2" Grid.Column="1" Name ="ReserveerBtn" Content="Reserveer" Height="40" Margin="25,25,25,25" Click="ReserveerBtn_Click"/>

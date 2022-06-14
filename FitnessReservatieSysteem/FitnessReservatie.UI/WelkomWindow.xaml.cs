@@ -1,5 +1,9 @@
-﻿using System;
+﻿using FitnessReservatie.BL.Domein;
+using FitnessReservatie.BL.Managers;
+using FItnessReservatieDL;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,15 +23,19 @@ namespace FitnessReservatie.UI
     /// </summary>
     public partial class WelkomWindow : Window
     {
-        public WelkomWindow(int KlantID)
+        private KlantManager km = new KlantManager(new KlantRepoADO(ConfigurationManager.ConnectionStrings["FitnessDBConnection"].ToString()));
+        
+        public WelkomWindow(int? KlantID, string KlantEmail)
         {
             InitializeComponent();
-
+            Klant k =  km.ZoekKlantDetails(KlantID, KlantEmail);
+            string naamGebruiker = k.Achternaam;
+            welkomLabel.Content = $"Welkom, {naamGebruiker}";
         }
-        public WelkomWindow(string KlantEmail)
-        {
-            InitializeComponent();
-        }
+        //public WelkomWindow(string KlantEmail)
+        //{
+        //    InitializeComponent();
+        //}
         private void ReserveerBtn_Click(object sender, RoutedEventArgs e)
         {
 

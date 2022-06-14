@@ -7,4 +7,9 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FitnessReservatie.BL\FitnessReservatie.BL.csproj" />
+    <ProjectReference Include="..\FItnessReservatieDL\FItnessReservatieDL.csproj" />
+  </ItemGroup>
+
 </Project>
