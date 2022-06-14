@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace FitnessReservatie.BL.Interfaces
 {
-    internal interface IKlantRepository
+    public interface IKlantRepository
     {
-        public Klant ZoekKlantOpId(int id);
-        public Klant ZoekKlantOpEmail(string email);
+        //public Klant ZoekKlantOpId(int id);
+        //public Klant ZoekKlantOpEmail(string email);
+        public string ZoekKlant(int? id,string email);
     }
 }

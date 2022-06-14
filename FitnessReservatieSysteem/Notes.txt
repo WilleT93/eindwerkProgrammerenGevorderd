@@ -1,0 +1,2 @@
+Data Source=DESKTOP-91NOPN3\SQLEXPRESS;Initial Catalog=FitnessReservatieSysteem;Integrated Security=True
+//connectie string db
