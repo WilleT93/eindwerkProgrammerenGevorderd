@@ -14,5 +14,7 @@ namespace FitnessReservatie.BL.Interfaces
         int? ZoekReservatieId(int klantId, DateTime reservatieDatum);
         int SchrijfReservatieIndDB(int klantId, DateTime reservatieDatum);
         void SchrijfReservatieDetailsInDB(int reservatieId, int toestelId, int tijdslotId);
+        //int WijsToestelToe(DateTime date, string type, string timeslot);
+        IReadOnlyList<int> ZoekBruikbareToestellen(DateTime date, string type, int tijdslotId);
     }
 }

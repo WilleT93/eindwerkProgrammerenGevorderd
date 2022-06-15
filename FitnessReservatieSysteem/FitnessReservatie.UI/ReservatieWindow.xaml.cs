@@ -24,36 +24,48 @@ namespace FitnessReservatie.UI
     {
         private ReservatieManager rm;
         private TijdslotManager tm;
+        private ToestelManager toem;
         int KlantId;
         public ReservatieWindow(int klantId)
         {
             InitializeComponent();
             rm = new ReservatieManager(new ReservatieRepoADO(ConfigurationManager.ConnectionStrings["FitnessDBConnection"].ToString()));
             tm = new TijdslotManager(new TijdslotRepoADO(ConfigurationManager.ConnectionStrings["FitnessDBConnection"].ToString()));
+            toem = new ToestelManager(new ToestelRepoADO(ConfigurationManager.ConnectionStrings["FitnessDBConnection"].ToString()));
+
             this.KlantId = klantId;
             datePicker.DisplayDateStart = DateTime.Today.AddDays(1);
             datePicker.DisplayDateEnd = DateTime.Today.AddDays(7);
             TijdslotComboBox.ItemsSource = tm.KiesTijdslot();
+            ToestelComboBox.ItemsSource = toem.KiesToestel();
     }
         private void MaakReservatieBtn_Click(object sender, RoutedEventArgs e)
         {
             DateTime? selectedDatum = null;
             string selectedToestelType = null;
             int? selectedTijdslotId = null;
-            //try
-            //{
-            //    int Klant_id = this.KlantId;
-            //    selectedDatum = reservatieDatum.selectedDatum;
-            //    int reservatieId = rm.SchrijfReservatieInDB(Klant_id, selectedDatum);
-            //}
-            //catch (Exception ex)
-            //{
-            //    if (datareservatie.SelectDate < DateTime.Today.AddDays(1))
-            //    {
+            try
+            {
+                int Klant_id = this.KlantId;
+                selectedDatum = datePicker.SelectedDate;
+                selectedTijdslotId = ++TijdslotComboBox.SelectedIndex;
+                selectedToestelType = (string)ToestelComboBox.SelectedItem;
+                rm.MaakReservatie(Klant_id, selectedDatum, selectedTijdslotId,selectedToestelType) ;
+                //    int reservatieId = rm.SchrijfReservatieInDB(Klant_id, selectedDatum);
+                //}
+                //catch (Exception ex)
+                //{
+                //    if (datareservatie.SelectDate < DateTime.Today.AddDays(1))
+                //    {
 
-            //    }
-            //}
-        }
+                //    }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+            }
 
         private void datePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {

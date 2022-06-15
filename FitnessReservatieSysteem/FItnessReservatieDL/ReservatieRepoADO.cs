@@ -27,7 +27,7 @@ namespace FItnessReservatieDL
         }
         public IReadOnlyList<ReservatieInfoDTO> ZoekReservatie(int id)
         {
-            if(id <= 0)
+            if (id <= 0)
             {
                 throw new ReservatieRepoADOException("GetReservations - ongeldig ID");
             }
@@ -39,33 +39,33 @@ namespace FItnessReservatieDL
                 "INNER JOIN Tijdslot t ON t.ID=rd.Tijdslot_id " +
                 "INNER JOIN Toestel toe ON toe.ID=rd.Toestel_id " +
                 "WHERE r.Klant_id=1;";
-            using (SqlCommand cmd = conn.CreateCommand()) 
+            using (SqlCommand cmd = conn.CreateCommand())
             {
-                conn.Open(); 
-            try
-            {
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.CommandText = query;
+                conn.Open();
+                try
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.CommandText = query;
                     IDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        DateTime Datum = (DateTime)reader ["Datum"];
+                        DateTime Datum = (DateTime)reader["Datum"];
                         string slot = (string)reader["slot"];
                         string type = (string)reader["type"];
                         reservaties.Add(new ReservatieInfoDTO(Datum, slot, type));
                     }
                     return reservaties.AsReadOnly();
 
-             }
-             catch(Exception ex)
-            {
+                }
+                catch (Exception ex)
+                {
                     throw new ReservatieRepoADOException("ZoekReservaties");
-            }
+                }
                 finally
                 {
                     conn.Close();
                 }
-                
+
             }
         }
 
@@ -80,8 +80,8 @@ namespace FItnessReservatieDL
                 "WHERE Klant_id=@KlantId AND Datum=@reservatieDatum";
             using (SqlCommand cmd = connection.CreateCommand())
             {
-                    cmd.CommandText = query;
-                    connection.Open();
+                cmd.CommandText = query;
+                connection.Open();
                 try
                 {
                     cmd.Parameters.AddWithValue("@KlantId", KlantId);
@@ -108,7 +108,7 @@ namespace FItnessReservatieDL
                 {
                     connection.Close();
                 }
-                
+
             }
         }
 
@@ -129,7 +129,7 @@ namespace FItnessReservatieDL
                     cmd.Parameters.Add(new SqlParameter("@id", System.Data.SqlDbType.Int));
                     cmd.Parameters.Add(new SqlParameter("@date", System.Data.SqlDbType.Date));
                     cmd.Parameters["@id"].Value = id;
-                    cmd.Parameters["#date"].Value = date;
+                    cmd.Parameters["@date"].Value = date;
                     cmd.CommandText = query;
                     int reservatieId = (int)cmd.ExecuteScalar();
                     return reservatieId;
@@ -178,6 +178,49 @@ namespace FItnessReservatieDL
             {
                 conn.Close();
             }
+        }
+
+        public IReadOnlyList<int> ZoekBruikbareToestellen(DateTime date, string type, int tijdslotId)
+        {
+            List<int> bruikbareToestellen = new List<int>();
+            SqlConnection conn = GetConnection();
+            string query = "SELECT t.ID FROM dbo.Toestel t WHERE  t.ID NOT IN " +
+                "(" +
+                "SELECT Toestel_id from ReservatieDetails rd " +
+                "JOIN Reservatie r ON r.ID=rd.Reservatie_id " +
+                "WHERE r.Datum=@datum AND rd.Tijdslot_id =@tsid" +
+                ")" +
+                "AND t.Type=@type AND Is_Bruikbaar=1";
+
+            using (SqlCommand cmd = conn.CreateCommand())
+            {
+                conn.Open();
+                try
+                {
+                    cmd.Parameters.AddWithValue("@datum", date);
+                    cmd.Parameters.AddWithValue("@tsid", tijdslotId);
+                    cmd.Parameters.AddWithValue("@type", type);
+                    cmd.CommandText = query;
+                    IDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        bruikbareToestellen.Add((int)reader["ID"]);
+
+                    }
+                    return bruikbareToestellen.AsReadOnly();
+
+                }
+                catch (Exception ex)
+                {
+                    throw new ReservatieRepoADOException("ZoekBruikbareToestellen");
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+
+
         }
     }
 }

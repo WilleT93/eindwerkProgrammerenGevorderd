@@ -26,20 +26,27 @@ namespace FitnessReservatie.BL.Managers
             }
             return repo.ZoekReservatie(id);
         }
-        //public void MaakReservatie(int klantId, DateTime reservatieDatum, int tijdslotId, string toestelType)
-        //{
-        //    try
-        //    {
-        //        int reservatieID = this.SchrijfReservatieInDB(klantId,reservatieDatum);
-        //        this.SchrijfReservatieDetailsInDB();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new ReservatieManagerException("MaakReservatie", ex);
-        //    }
+        public void MaakReservatie(int klantId, DateTime? reservatieDatum, int? tijdslotId, string toestelType)
+        {
+            try
+            {
+            if (reservatieDatum < DateTime.Today.AddDays(1) || reservatieDatum > DateTime.Today.AddDays(7))
+            {
+                throw new ReservatieManagerException("Enkel dagen toegelaten die maximaal 7dagen in de toekomst vallen");
+            }
+                int reservatieID = this.SchrijfReservatieInDB(klantId, (DateTime)reservatieDatum);
+                int toestelID = this.WijsToestelToe((DateTime)reservatieDatum, toestelType,(int)tijdslotId);
+
+                this.SchrijfReservatieDetailsInDB(reservatieID,toestelID,(int)tijdslotId);
+            }
+            catch (Exception ex)
+            {
+                throw new ReservatieManagerException("MaakReservatie", ex);
+                
+            }
 
 
-        //}
+        }
         public int SchrijfReservatieInDB(int KlantId, DateTime reservatieDatum)
         {
             if (KlantId <= 0)
@@ -63,6 +70,15 @@ namespace FitnessReservatie.BL.Managers
                 throw new ReservatieManagerException("ZoekReservatieId");
             }
             return repo.ZoekReservatieId(reservatieId, reservatieDatum);
+        }
+        public int WijsToestelToe(DateTime date, string type, int tijdslotId )
+        {
+            IReadOnlyList<int> toestelIDs = repo.ZoekBruikbareToestellen(date, type, tijdslotId);
+            Random r = new Random();
+            int index = r.Next(toestelIDs.Count);
+            return toestelIDs[index];
+
+            //return repo.WijsToestelToe(date, type, timeslot);
         }
 
 
