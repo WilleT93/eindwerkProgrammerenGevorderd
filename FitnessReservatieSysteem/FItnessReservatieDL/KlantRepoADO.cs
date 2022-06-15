@@ -123,6 +123,7 @@ namespace FItnessReservatieDL
                             string KlantVoornaam = (string)reader["Voornaam"];
                             string KlantAchternaam = (string)reader["Familienaam"];
                             string klantEmail = (string)reader["Email"];
+                            reader.Close();
                             Klant k = new Klant(klantID,klantEmail,KlantVoornaam,KlantAchternaam);
                             return k;
                         }

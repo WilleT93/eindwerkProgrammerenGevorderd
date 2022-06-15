@@ -8,17 +8,18 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{C245B781-E169-4168-A6B8-64F73BD7BC3C}"
 	ProjectSection(SolutionItems) = preProject
 		Notes.txt = Notes.txt
+		SQL.txt = SQL.txt
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FItnessReservatieBLTest", "FItnessReservatieBLTest\FItnessReservatieBLTest.csproj", "{A3998AA2-0ADF-4D3D-8711-CBB9A358C8B9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessReservatie.UI", "FitnessReservatie.UI\FitnessReservatie.UI.csproj", "{268FD205-148B-4861-8916-213E073AA55B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FItnessReservatieDL", "FItnessReservatieDL\FItnessReservatieDL.csproj", "{5062BDC7-736F-4DD2-8F55-05D3C1D44261}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FItnessReservatieDL", "FItnessReservatieDL\FItnessReservatieDL.csproj", "{5062BDC7-736F-4DD2-8F55-05D3C1D44261}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{9F1F1EDE-7B41-4254-8401-E4CFFC80E98A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessReservatieDLTest", "FitnessReservatieDLTest\FitnessReservatieDLTest.csproj", "{245EF680-A310-4D81-9818-C3B3E538BB90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessReservatieDLTest", "FitnessReservatieDLTest\FitnessReservatieDLTest.csproj", "{245EF680-A310-4D81-9818-C3B3E538BB90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

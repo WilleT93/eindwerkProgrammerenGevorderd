@@ -24,13 +24,17 @@ namespace FitnessReservatie.UI
     public partial class WelkomWindow : Window
     {
         private KlantManager km = new KlantManager(new KlantRepoADO(ConfigurationManager.ConnectionStrings["FitnessDBConnection"].ToString()));
-        
+        private ReservatieManager rm = new ReservatieManager(new ReservatieRepoADO(ConfigurationManager.ConnectionStrings["FitnessDBConnection"].ToString()));
+        private int klantId;
         public WelkomWindow(int? KlantID, string KlantEmail)
         {
             InitializeComponent();
-            Klant k =  km.ZoekKlantDetails(KlantID, KlantEmail);
-            string naamGebruiker = k.Achternaam;
+            Klant klant =  km.ZoekKlantDetails(KlantID, KlantEmail);
+            string naamGebruiker = klant.Voornaam;
             welkomLabel.Content = $"Welkom, {naamGebruiker}";
+            this.klantId = klant.Id;
+            var reservaties = rm.ZoekReservatie(this.klantId);
+            ReservatieListBox.ItemsSource = reservaties;
         }
         //public WelkomWindow(string KlantEmail)
         //{
@@ -38,6 +42,8 @@ namespace FitnessReservatie.UI
         //}
         private void ReserveerBtn_Click(object sender, RoutedEventArgs e)
         {
+            ReservatieWindow reservatiewindow = new ReservatieWindow(this.klantId);
+            reservatiewindow.ShowDialog();
 
         }
     }

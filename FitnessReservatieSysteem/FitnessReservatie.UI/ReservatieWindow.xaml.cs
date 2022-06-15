@@ -1,5 +1,8 @@
-﻿using System;
+﻿using FitnessReservatie.BL.Managers;
+using FItnessReservatieDL;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +22,54 @@ namespace FitnessReservatie.UI
     /// </summary>
     public partial class ReservatieWindow : Window
     {
-        public ReservatieWindow()
+        private ReservatieManager rm;
+        private TijdslotManager tm;
+        int KlantId;
+        public ReservatieWindow(int klantId)
         {
             InitializeComponent();
+            rm = new ReservatieManager(new ReservatieRepoADO(ConfigurationManager.ConnectionStrings["FitnessDBConnection"].ToString()));
+            tm = new TijdslotManager(new TijdslotRepoADO(ConfigurationManager.ConnectionStrings["FitnessDBConnection"].ToString()));
+            this.KlantId = klantId;
+            datePicker.DisplayDateStart = DateTime.Today.AddDays(1);
+            datePicker.DisplayDateEnd = DateTime.Today.AddDays(7);
+            TijdslotComboBox.ItemsSource = tm.KiesTijdslot();
+    }
+        private void MaakReservatieBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime? selectedDatum = null;
+            string selectedToestelType = null;
+            int? selectedTijdslotId = null;
+            //try
+            //{
+            //    int Klant_id = this.KlantId;
+            //    selectedDatum = reservatieDatum.selectedDatum;
+            //    int reservatieId = rm.SchrijfReservatieInDB(Klant_id, selectedDatum);
+            //}
+            //catch (Exception ex)
+            //{
+            //    if (datareservatie.SelectDate < DateTime.Today.AddDays(1))
+            //    {
+
+            //    }
+            //}
         }
+
+        private void datePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ToestelComboBox.IsEnabled=true;
+        }
+
+
+        private void ToestelComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TijdslotComboBox.IsEnabled = true;
+        }
+
+        private void TijdslotComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MaakReservatieBtn.IsEnabled = true;
+        }
+
     }
 }

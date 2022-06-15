@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FitnessReservatie.UI"
         mc:Ignorable="d"
-        Title="ReservatieWindow" Height="450" Width="800">
+        Title="ReservatieWindow" Height="250" Width="500">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <DatePicker Grid.Row="0" FirstDayOfWeek="Monday" Name="datePicker" SelectedDateChanged="datePicker_SelectedDateChanged"/>
+
+        <ComboBox Grid.Row="1" Grid.Column="1" Name="ToestelComboBox" IsEnabled="False" SelectionChanged="ToestelComboBox_SelectionChanged"/>
+        <Label Grid.Row="1" Content="Kies uw toestel" HorizontalAlignment="Center"/>
+
+        <ComboBox Grid.Row="2" Name="TijdslotComboBox" IsEnabled="False" SelectionChanged="TijdslotComboBox_SelectionChanged"/>
+        <Label Grid.Row="2" Content="Kies een tijdslot" HorizontalAlignment="Center"/>
+
+        <Button Grid.Row="3" Grid.Column="1" Name ="MaakReservatieBtn" Content="Maak reservatie" Height="40" Margin="150,1,150,1" Click="MaakReservatieBtn_Click" IsEnabled="False"/>
+
     </Grid>
 </Window>

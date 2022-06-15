@@ -1,4 +1,5 @@
 ﻿using FitnessReservatie.BL.Domein;
+using FitnessReservatie.BL.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace FitnessReservatie.BL.Interfaces
 {
-    internal interface IReservatieRepository
+    public interface IReservatieRepository
     {
-        public Reservatie GetReservatie(int id, string email);
-        public Reservatie GetReservatieDetails(int id, string email); 
-
-
+        IReadOnlyList<ReservatieInfoDTO> ZoekReservatie(int id);
+        int? ZoekReservatieId(int klantId, DateTime reservatieDatum);
+        int SchrijfReservatieIndDB(int klantId, DateTime reservatieDatum);
+        void SchrijfReservatieDetailsInDB(int reservatieId, int toestelId, int tijdslotId);
     }
 }

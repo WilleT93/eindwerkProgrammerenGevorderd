@@ -19,10 +19,13 @@
         <Image Source="C:\Users\Wille\Desktop\eindopdracht-programmerenGevorderd\eindwerkProgrammerenGevorderd\FitnessReservatieSysteem\image-edit.jpg"  Grid.Column="0" Grid.RowSpan="4"/>
 
         <Label Grid.Row="0" Content="login pagina" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label Grid.Row="1" Content="Klant ID:" Margin ="30,20,5,5"/>
-        <TextBox Grid.Row="1" Name="IdTextBox"  Margin="100,20,150,20" InputScope="Number"/>
-        <Label Grid.Row="2" Content="Email:" Margin="30,20,5,5"/>
-        <TextBox Grid.Row="2" Name ="EmailTextBox"  Margin="100,20,150,20" InputScope="EmailSmtpAddress"/>
+        
+        <Label Grid.Row="1" Content="Klant ID:" Margin ="5,0,5,5" HorizontalAlignment="Center"/>
+        <TextBox Grid.Row="1" Name="IdTextBox"  Margin="150,30,150,10" InputScope="Number"/>
+        
+        <Label Grid.Row="2" Content="Email:" Margin="5,0,5,5" HorizontalAlignment="Center"/>
+        <TextBox Grid.Row="2" Name ="EmailTextBox"  Margin="150,30,150,10"  InputScope="EmailSmtpAddress"/>
+        
         <Button Grid.Row="3" Name ="loginBtn" Content="login" Click="loginBtn_Click"/>
     </Grid>
 </Window>

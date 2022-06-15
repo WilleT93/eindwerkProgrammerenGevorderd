@@ -1,0 +1,37 @@
+INSERT INTO dbo.Reservatie(Datum,Klant_id) VALUES('5/5/2022',1);
+INSERT INTO dbo.Reservatie(Datum,Klant_id) VALUES('6/5/2022',2);
+INSERT INTO dbo.Reservatie(Datum,Klant_id) VALUES('7/5/2022',3);
+
+INSERT INTO dbo.Tijdslot(Slot) VALUES('08:00 - 09:00');
+INSERT INTO dbo.Tijdslot(Slot) VALUES('09:00 - 10:00');
+INSERT INTO dbo.Tijdslot(Slot) VALUES('10:00 - 11:00');
+INSERT INTO dbo.Tijdslot(Slot) VALUES('11:00 - 12:00');
+INSERT INTO dbo.Tijdslot(Slot) VALUES('12:00 - 13:00');
+INSERT INTO dbo.Tijdslot(Slot) VALUES('13:00 - 14:00');
+INSERT INTO dbo.Tijdslot(Slot) VALUES('14:00 - 15:00');
+INSERT INTO dbo.Tijdslot(Slot) VALUES('15:00 - 16:00');
+INSERT INTO dbo.Tijdslot(Slot) VALUES('16:00 - 17:00');
+INSERT INTO dbo.Tijdslot(Slot) VALUES('17:00 - 18:00');
+INSERT INTO dbo.Tijdslot(Slot) VALUES('18:00 - 19:00');
+INSERT INTO dbo.Tijdslot(Slot) VALUES('19:00 - 20:00');
+INSERT INTO dbo.Tijdslot(Slot) VALUES('20:00 - 21:00');
+INSERT INTO dbo.Tijdslot(Slot) VALUES('21:00 - 22:00');
+
+INSERT INTO dbo.Toestel(Type,Is_Bruikbaar) VALUES('loopband',1);
+INSERT INTO dbo.Toestel(Type,Is_Bruikbaar) VALUES('loopband',1);
+INSERT INTO dbo.Toestel(Type,Is_Bruikbaar) VALUES('loopband',1);
+INSERT INTO dbo.Toestel(Type,Is_Bruikbaar) VALUES('loopband',1);
+INSERT INTO dbo.Toestel(Type,Is_Bruikbaar) VALUES('loopband',1);
+INSERT INTO dbo.Toestel(Type,Is_Bruikbaar) VALUES('loopband',1);
+INSERT INTO dbo.Toestel(Type,Is_Bruikbaar) VALUES('fiets',1);
+INSERT INTO dbo.Toestel(Type,Is_Bruikbaar) VALUES('fiets',1);
+INSERT INTO dbo.Toestel(Type,Is_Bruikbaar) VALUES('fiets',1);
+INSERT INTO dbo.Toestel(Type,Is_Bruikbaar) VALUES('fiets',1);
+INSERT INTO dbo.Toestel(Type,Is_Bruikbaar) VALUES('fiets',1);
+INSERT INTO dbo.Toestel(Type,Is_Bruikbaar) VALUES('fiets',1);
+
+INSERT INTO dbo.ReservatieDetails(Reservatie_id,Toestel_id,Tijdslot_id) VALUES (1,1,1);
+INSERT INTO dbo.ReservatieDetails(Reservatie_id,Toestel_id,Tijdslot_id) VALUES (2,2,2);
+INSERT INTO dbo.ReservatieDetails(Reservatie_id,Toestel_id,Tijdslot_id) VALUES (4,4,4);
+INSERT INTO dbo.ReservatieDetails(Reservatie_id,Toestel_id,Tijdslot_id) VALUES (5,5,5);
+
