@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{9F1F1EDE-7
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessReservatieDLTest", "FitnessReservatieDLTest\FitnessReservatieDLTest.csproj", "{245EF680-A310-4D81-9818-C3B3E538BB90}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessAdmin.UI", "FitnessAdmin.UI\FitnessAdmin.UI.csproj", "{F6F54D64-C53D-48BA-8BE1-2D7B2072133C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{245EF680-A310-4D81-9818-C3B3E538BB90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{245EF680-A310-4D81-9818-C3B3E538BB90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{245EF680-A310-4D81-9818-C3B3E538BB90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6F54D64-C53D-48BA-8BE1-2D7B2072133C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6F54D64-C53D-48BA-8BE1-2D7B2072133C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6F54D64-C53D-48BA-8BE1-2D7B2072133C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6F54D64-C53D-48BA-8BE1-2D7B2072133C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

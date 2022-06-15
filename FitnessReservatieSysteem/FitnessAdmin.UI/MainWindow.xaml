@@ -1,0 +1,33 @@
+﻿<Window x:Class="FitnessAdmin.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FitnessAdmin.UI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="500">
+    <Grid Width="500">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Row="5" Grid.Column="1" Name ="VoegToestelToeBtn" Content="Voeg toestel toe"  Click="voegToestelToe_Click" HorizontalAlignment="Right" Width="160" Margin="0,2,40,2"/>
+        <Button Grid.Row="4" Grid.Column="1" Name ="ZetBuitenDienstBtn" Content="Zet toestel buiten dienst"  Click="ZetBuitenDienst_Click" HorizontalAlignment="Right" Width="160" Margin="0,2,40,2" IsEnabled="False"/>
+        <Button Grid.Row="3" Grid.Column="1" Name ="ZetIndientBtn" Content="Zet toestel indienst"  Click="ZetIndienst_Click" HorizontalAlignment="Right" Width="160" Margin="0,2,40,2" IsEnabled="False"/>
+        <Button Grid.Row="2" Grid.Column="1" Name ="VerwijderToestel" Content="Verwijder een toestel"  Click="VerwijderToestel_Click" HorizontalAlignment="Right" Width="160" Margin="0,2,40,2" IsEnabled="False"/>
+        <ListBox Grid.Column="0" Grid.Row="2" Grid.RowSpan="4" Name="ToestelListbox" SelectionChanged="ToestelListbox_SelectionChanged"/>
+        <Label Grid.Row="0" Grid.Column="0" Name="ToestelTypeTextbox" Content="Kies toestel type" HorizontalAlignment="Center"/>
+        <Label Grid.Row="1" Grid.Column="0" Name="ToestelIDTextbox" Content="Kies Toestel ID" HorizontalAlignment="Center"/>
+        <ComboBox Grid.Row="0" Grid.Column="1" Name="ToestelTypeComboBox" SelectionChanged="ToestelTypeComboBox_SelectionChanged"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="ToestelIDTextBox" TextChanged="ToestelIDTextBox_TextChanged"/>
+
+    </Grid>
+</Window>

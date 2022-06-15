@@ -9,11 +9,16 @@ namespace FitnessReservatie.BL.Domein
 {
     public class Toestel
     {
-        public Toestel(int id, string type)
+        public Toestel(int id, string type,bool beschikbaarheid)
         {
             ZetId(id);
             ZetType(type);
-            IsBeschikbaar = true; // standaard waarde is true
+            ZetBeschikbaarheid(beschikbaarheid);
+           
+        }
+        private void ZetBeschikbaarheid(bool beschikbaarheid)
+        {
+            this.IsBeschikbaar = beschikbaarheid;
         }
 
         public int Id { get; private set; }
@@ -32,6 +37,19 @@ namespace FitnessReservatie.BL.Domein
             }
             this.Type = type;
         }
-        
+        public override string ToString()
+        {
+            string beschikbaarheid;
+            if (this.IsBeschikbaar)
+            {
+                beschikbaarheid = "beschikbaar";
+            }
+            else
+            {
+                beschikbaarheid = "niet beschikbaar";
+            }
+            return $"{this.Id}-{this.Type}-{beschikbaarheid}";
+        }
+
     }
 }
