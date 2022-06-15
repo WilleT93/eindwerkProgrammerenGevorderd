@@ -41,6 +41,11 @@ namespace FitnessReservatie.BL.Managers
             repo.ZetToeselBeschikbaar(id);
         }
 
+        public void VoegToestelToe(string type)
+        {
+            repo.VoegToestelToe(type);
+        }
+
         public void MaakToestelOnbeschikbaar(int id)
         {
             repo.ZetToestelOnbeschikbaar(id);

@@ -196,7 +196,31 @@ namespace FItnessReservatieDL
                 }
             }
         }
+
+        public void VoegToestelToe(string type)
+        {
+            SqlConnection conn = GetConnection();
+            string query = "INSERT INTO [dbo].[Toestel] (Type,Is_Bruikbaar) VALUES (@type,1)";
+            using (SqlCommand command = conn.CreateCommand())
+            {
+                command.CommandText = query;
+                conn.Open();
+                try
+                {
+                    command.Parameters.AddWithValue("@type", type);
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    throw new ToestelRepoADOException("VoegToestelToe", ex);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
         }
+    }
     }
 
 

@@ -34,7 +34,10 @@ namespace FitnessAdmin.UI
 
         private void VoegToeBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            string type = VoegToeBox.Text;
+            tm.VoegToestelToe(type);
+            DialogResult = true;
+            Close();
         }
     }
 }

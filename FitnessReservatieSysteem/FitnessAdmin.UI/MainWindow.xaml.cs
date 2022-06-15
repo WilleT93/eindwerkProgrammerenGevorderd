@@ -36,7 +36,12 @@ namespace FitnessAdmin.UI
         private void voegToestelToe_Click(object sender, RoutedEventArgs e)
         {
             VoegToestelToe voegtoesteltoe = new VoegToestelToe();
-            voegtoesteltoe.ShowDialog();
+            if (voegtoesteltoe.ShowDialog() == true)
+            {
+            ToestelTypeComboBox.ItemsSource = tm.KiesToestel();
+            ToestelListbox.ItemsSource = tm.ZoekAlleToestellen();
+                
+            }
         }
 
         private void ZetBuitenDienst_Click(object sender, RoutedEventArgs e)
@@ -54,7 +59,6 @@ namespace FitnessAdmin.UI
         private void VerwijderToestel_Click(object sender, RoutedEventArgs e)
         {
             Toestel selectedItem = (Toestel)ToestelListbox.SelectedItem;
-            //int toestelID = int.Parse(selectedItem.Split('-')[0]);
             tm.VerwijderToestel(selectedItem.Id);
             
         }

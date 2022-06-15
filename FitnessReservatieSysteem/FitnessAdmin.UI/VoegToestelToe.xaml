@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
         <Label Name="VoegToeLabel" Content="Type toestel" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox Name="VoegToeBox" Grid.Column="1" Margin="50,50,50,50"/>
-        <Button Name="VoegToeBtn" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Content="Add" Margin="100,25,100,25" Click="VoegToeBtn_Click"/>
+        <Button Name="VoegToeBtn" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Content="Add" Margin="150,40,150,40" Click="VoegToeBtn_Click"/>
 
     </Grid>
 </Window>

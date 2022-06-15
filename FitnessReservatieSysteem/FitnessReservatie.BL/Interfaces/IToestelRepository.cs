@@ -15,5 +15,6 @@ namespace FitnessReservatie.BL.Interfaces
         void VerwijderToestel(int toestelID);
         void ZetToeselBeschikbaar(int id);
         void ZetToestelOnbeschikbaar(int id);
+        void VoegToestelToe(string type);
     }
 }
